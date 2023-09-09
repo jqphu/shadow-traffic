@@ -1,3 +1,7 @@
-name = "" # todo
+name = "shadow-traffic"
 main = "./src/index.ts"
 compatibility_date = "2022-05-03"
+
+[vars]
+PROD_BASE = "https://api.pocketnode.app"
+SHADOW_BASE = "https://api.test.server.pocketnode.app"
