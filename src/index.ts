@@ -1,5 +1,11 @@
 export default {
 	async fetch(request: Request) {
-		return new Response(`request method: ${request.method}`);
+		const url = new URL(request.url);
+		const prodRequest = new Request(
+			new URL(url.pathname + url.search + url.hash, 'https://api.pocketnode.app'),
+			request
+		);
+
+		return fetch(prodRequest);
 	},
 };
