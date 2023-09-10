@@ -1,7 +1,6 @@
 name = "shadow-traffic"
 main = "./src/index.ts"
 compatibility_date = "2022-05-03"
-node_compat = true
 
 [vars]
 PROD_BASE = "https://api.pocketnode.app"
