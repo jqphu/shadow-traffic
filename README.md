@@ -19,6 +19,11 @@ The purpose is to test new deployments under real production workloads.
 
 4. Run `bun run wrangler tail` to see the logs or view it in the UI. You will be able to see any difference in production requests and staging requests.
 
+### Optional Configuration
+
+`RATE` - Set this field to a value between 0-100 to represent the percentage of requests that will be shadowed. Setting this to 0 disables any shadowing at all.
+`IGNORED_PATHS` - Set this to the paths you never want to shadow. Useful for stateful API endpoints.
+
 ---
 
 Alternatively deploy below and change the env variables in the cloudflare ui.
