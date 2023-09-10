@@ -4,7 +4,7 @@ const shadowTraffic = async (
 ) => {
 	const shadowResponse = await shadowResponsePromise;
 	if (originalResponse.status != shadowResponse.status) {
-		console.warn(`Expected Status {originalResponse.status}, Shadow Found {shadowResponse.status}`);
+		console.warn(`Expected Status ${originalResponse.status}, Shadow Found ${shadowResponse.status}`);
 		return;
 	}
 
@@ -13,6 +13,8 @@ const shadowTraffic = async (
 	let shadowBody;
 
 	if (contentType == 'application/json') {
+    // TODO(jqphu): need to compare json semantically. Probably use
+    // lodash.isEqual. Likely more efficient too.
 		originalBody = JSON.stringify(await originalResponse.json());
 		shadowBody = JSON.stringify(await shadowResponse.json());
 	} else if (contentType == 'text/plain') {
@@ -24,7 +26,7 @@ const shadowTraffic = async (
 	}
 
 	if (originalBody != shadowBody) {
-		console.warn(`Body returned different results: Original '{originalBody}', Shadow '{shadowBody}'`);
+		console.warn(`Body returned different results: Original '${originalBody}', Shadow '${shadowBody}'`);
 	}
 };
 
