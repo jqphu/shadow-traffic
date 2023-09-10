@@ -3,6 +3,9 @@ main = "./src/index.ts"
 compatibility_date = "2022-05-03"
 
 [vars]
-PROD_BASE = "https://api.pocketnode.app"
-SHADOW_BASE = "https://api.test.server.pocketnode.app"
 RATE = 100
+
+# TODO: Change parmaeters below! 
+PROD_BASE = "https://example.com"
+SHADOW_BASE = "https://example.com"
+IGNORED_PATHS = ["/favicon.ico", "/ignored_path"]
