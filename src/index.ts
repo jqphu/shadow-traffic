@@ -8,34 +8,22 @@ export interface Env {
   ///
   /// Number from 0-100.
   RATE: number;
-  /// Ignored paths
-  ///
-  /// These will never be mirrored.
-  IGNORED_PATHS: string[];
 }
 
 export default {
 	async fetch(request: Request, env: Env, context: ExecutionContext) {
+
+    // Requests that should be mirrored. 
+    if (!env.RATE || (Math.random() * 100) > env.RATE) {
+      return fetch(request);
+    }
+
 		const url = new URL(request.url);
 		const urlParts = url.pathname + url.search + url.hash;
 		const prodUrl = new URL(urlParts, env.PROD_BASE);
 
-    // Separate to prodRequest since we don't want to clone the request if
-    // we're going to not run the shadowing.
-    const nonMirroredProdRequest = new Request(prodUrl, request);
-
-    // Requests that should not be mirrored. 
-    if (!env.RATE || (Math.random() * 100) > env.RATE) {
-      return fetch(nonMirroredProdRequest);
-    }
-
-    // Paths that should not be mirrored.
-    if (env.IGNORED_PATHS.includes(url.pathname)) {
-      return fetch(nonMirroredProdRequest);
-    }
-
 		try {
-      const prodRequest = new Request(prodUrl, request.clone());
+			const prodRequest = new Request(prodUrl, request.clone());
 			const shadowRequest = new Request(new URL(urlParts, env.SHADOW_BASE), request);
 
 			// Note: we need to fetch here so we can re-use the body.
