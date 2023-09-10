@@ -8,7 +8,6 @@ The purpose is to test new deployments under real production workloads.
 
 **This is ideal for stateless endpoints. Be cautious using this with stateful applications**
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/jqphu/shadow-traffic)
 
 ## How to use it
 
@@ -19,6 +18,12 @@ The purpose is to test new deployments under real production workloads.
 3. Modify the client requests to point to the Cloudflare Worker.
 
 4. Run `bun run wrangler tail` to see the logs or view it in the UI. You will be able to see any difference in production requests and staging requests.
+
+---
+
+Alternatively deploy below and change the env variables in the cloudflare ui.
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/jqphu/shadow-traffic)
 
 ## Design
 - We use Cloudflare Workers to try to minimize the latency due to this proxy. They run on the edge and are incredibly lightweight. There shouldn't be any noticable latency increase.
