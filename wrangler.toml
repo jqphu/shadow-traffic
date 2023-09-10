@@ -6,3 +6,4 @@ node_compat = true
 [vars]
 PROD_BASE = "https://api.pocketnode.app"
 SHADOW_BASE = "https://api.test.server.pocketnode.app"
+RATE = 100
