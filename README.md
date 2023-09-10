@@ -13,7 +13,7 @@ The purpose is to test new deployments under real production workloads.
 
 1. Modify `wrangler.toml` and set `PROD_BASE` to your production endpoint and `SHADOW_BASE` to your staging endpoint.
 
-2. `bun run deploy` or `npm run deploy` to deploy the Cloudflare Worker.
+2. `bun run deploy` to deploy the Cloudflare Worker.
 
 3. Modify the client requests to point to the Cloudflare Worker.
 
